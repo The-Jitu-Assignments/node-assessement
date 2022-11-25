@@ -1,0 +1,8 @@
+-- CREATE TABLE products(
+--   id INT IDENTITY PRIMARY KEY,
+--   productName VARCHAR(50),
+--   productDescription VARCHAR(250),
+--   price INT,
+--   imgUrl VARCHAR(250),
+--   discountRate INT
+-- );

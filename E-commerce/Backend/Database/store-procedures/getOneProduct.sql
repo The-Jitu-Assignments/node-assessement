@@ -1,0 +1,5 @@
+CREATE OR ALTER PROCEDURE usp_getOneProduct(@id INT)
+AS
+BEGIN
+SELECT * FROM products WHERE id = @id
+END
