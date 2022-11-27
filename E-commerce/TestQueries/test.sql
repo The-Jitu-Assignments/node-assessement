@@ -38,6 +38,12 @@ GO
 --   VALUES (@id, @userName, @userEmail, @userPassword);
 -- END;
 
+CREATE OR ALTER PROC findUser(@userEmail VARCHAR(50))
+AS 
+BEGIN
+  SELECT * FROM users WHERE userEmail = @userEmail;
+END;
+
 -- select * from users;
 
 -- drop TABLE products
