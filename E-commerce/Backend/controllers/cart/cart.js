@@ -1,7 +1,7 @@
 const { sqlConfig } = require('../../config/index')
 const sql = require('mssql');
 
-exports.getAllProducts = async (req, res) => {
+exports.getAllProductsInCart = async (req, res) => {
   try {
     const pool = await sql.connect(sqlConfig);
     const response = (await pool.request().execute('dbo.usp_getAllProductsInCart'));
