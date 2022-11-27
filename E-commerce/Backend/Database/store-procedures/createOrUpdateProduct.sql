@@ -4,7 +4,10 @@ CREATE OR ALTER PROCEDURE usp_createOrUpdateProduct(
   @productDescription VARCHAR(250),
   @price INT,
   @imgUrl VARCHAR(250),
-  @discountRate INT
+  @discountRate INT,
+  @quantity INT = 1,
+  @productDeleted INT = 0,
+  @productInCart  INT = 0
 )
 AS
 BEGIN
@@ -14,7 +17,10 @@ IF EXISTS (select * from products where id = @id)
   productDescription = @productDescription,
   price = @price,
   imgUrl = @imgUrl,
-  discountRate = @discountRate
+  discountRate = @discountRate,
+  quantity = @quantity,
+  productDeleted = @productDeleted,
+  productInCart = @productInCart
 where id = @id;
 ELSE
   insert into products 

@@ -41,12 +41,6 @@ GO
 -- INSERT INTO products VALUES(@productName, @productDescription, @price, @imgUrl, @discountRate)
 -- END
 
-CREATE OR ALTER PROCEDURE usp_getOneProduct(@id INT)
-AS
-BEGIN
-SELECT * FROM products WHERE id = @id
-END
-
  
 EXEC usp_getAllProducts;
 
