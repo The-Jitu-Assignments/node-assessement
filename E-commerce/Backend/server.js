@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const  { router } = require('./routes/productsRoute');
+const  productroutes  = require('./routes/productsRoute');
 const cartRoutes = require('./routes/cartRoute');
 
 dotenv.config();
@@ -9,7 +9,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/products', router);
+app.use('/products', productroutes);
 app.use('/cart', cartRoutes);
 
 // test route
