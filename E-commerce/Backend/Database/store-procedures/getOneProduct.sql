@@ -1,4 +1,4 @@
-CREATE OR ALTER PROCEDURE usp_getOneProduct(@id INT)
+CREATE OR ALTER PROCEDURE usp_getOneProduct(@id VARCHAR(50))
 AS
 BEGIN
 SELECT * FROM products WHERE id = @id

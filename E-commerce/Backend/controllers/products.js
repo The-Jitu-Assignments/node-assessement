@@ -19,7 +19,9 @@ exports.getASingleProduct = async (req, res) => {
   try {
     const { id } = req.params;
     const pool = await sql.connect(sqlConfig);
-    const response = await pool.request().execute('usp_getOneProduct', {id});
+    const response = await pool.request()
+      .input('id', id)
+      .execute('usp_getOneProduct');
     const product = response.recordset;
     return res.status(200).json({
       product
