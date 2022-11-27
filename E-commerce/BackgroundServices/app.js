@@ -1,9 +1,14 @@
 const express = require('express');
 const app = express();
+const cron = require('node-cron');
+
+
 const port = process.env.PORT || 3000;
 
 const run = () => {
-  console.log('running')
+  cron.schedule('*/5 * * * *', () => {
+    console.log('Starting up...');
+  });
 };
 
 run();
