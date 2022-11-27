@@ -43,17 +43,16 @@ exports.login = async (req, res) => {
       return res.status(400).json({ error: 'Please fill in all the fields' });
     };
 
-    const user = await pool.request()
+    const user = await (await pool.request()
      .input('userEmail', userEmail)
-     .execute('findUser');
-
-    const foundUser = user.recordset[0]
+     .execute('findUser')).recordset[0];
+    
     console.log(user);
     
-    if (foundUser) {
-      const comparePassword = await bcrypt.compare(userPassword, foundUser.userPassword);
-      if (comparePassword) {
-        const { userPassword, id, ...payload } = foundUser;
+    if (user) {
+      const checkPassword = await bcrypt.compare(userPassword, user.userPassword);
+      if (checkPassword) {
+        const { userPassword, id, ...payload } = user;
         const token = jwt.sign(payload, process.env.SECRET, { expiresIn: '24h' });
         return res.status(200).json({
           msg: 'User Logged in successfully',

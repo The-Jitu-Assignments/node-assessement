@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const  productroutes  = require('./routes/productsRoute');
+const  productRoutes  = require('./routes/productsRoute');
 const cartRoutes = require('./routes/cartRoute');
 const userRoutes = require('./routes/userRoute');
 
@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/products', productroutes);
+app.use('/products', productRoutes);
 app.use('/cart', cartRoutes);
 app.use('/', userRoutes);
 
