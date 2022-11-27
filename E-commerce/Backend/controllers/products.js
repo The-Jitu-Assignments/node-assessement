@@ -58,7 +58,7 @@ exports.createProduct = async (req, res) => {
 exports.updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    const { productName, productDescription, price, imgUrl, discountRate } = req.body;
+    const { productName, productDescription, price, imgUrl, discountRate, quantity, productInCart, productDeleted } = req.body;
     const pool = await sql.connect(sqlConfig);
     await pool.request()
       .input('id', id)
@@ -67,6 +67,9 @@ exports.updateProduct = async (req, res) => {
       .input('price', price)
       .input('imgUrl', imgUrl)
       .input('discountRate', discountRate)
+      .input('quantity', quantity)
+      .input('productInCart', productInCart)
+      .input('productDeleted', productDeleted)
       .execute('usp_createOrUpdateProduct')
     return res.status(200).json({
       msg: 'Todo Updated'
