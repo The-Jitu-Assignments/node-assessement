@@ -5,6 +5,7 @@ GO
 -- select * from carBrands;
 
 -- products table
+
 -- CREATE TABLE products(
 --   id VARCHAR(50) PRIMARY KEY,
 --   productName VARCHAR(50),
@@ -16,6 +17,14 @@ GO
 --   productInCart INT DEFAULT 0,
 --   productDeleted INT DEFAULT 0
 -- );
+
+CREATE TABLE users(
+  id VARCHAR(50) PRIMARY KEY,
+  userName VARCHAR(50),
+  userEmail VARCHAR(50),
+  userPassword VARCHAR(50),
+  receivedEmail INT DEFAULT 0
+);
 
 -- drop TABLE products
 
