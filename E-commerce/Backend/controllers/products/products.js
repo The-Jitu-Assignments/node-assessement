@@ -1,4 +1,4 @@
-const { sqlConfig } = require('../config/index.js');
+const { sqlConfig } = require('../../config/index')
 const sql = require('mssql');
 const { v4 } = require('uuid');
 
