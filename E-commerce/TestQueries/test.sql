@@ -120,3 +120,15 @@ GO
 -- END;
 
 -- exec usp_getProductsInCart;
+
+CREATE OR ALTER PROCEDURE usp_getUsersToSendEmail
+AS
+BEGIN
+  SELECT 1 FROM users WHERE receivedEmail = 0
+END;
+
+CREATE OR ALTER PROCEDURE usp_updateReceivedEmail(@id VARCHAR(50))
+AS
+BEGIN
+  UPDATE users SET receivedEmail = 1 WHERE id = @id;
+END;
