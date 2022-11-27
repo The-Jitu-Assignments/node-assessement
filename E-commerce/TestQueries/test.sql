@@ -81,10 +81,10 @@ GO
 -- SELECT * FROM products WHERE id = @id
 -- END
 
-CREATE OR ALTER PROCEDURE usp_getProductsInCart
-AS
-BEGIN
-  SELECT * FROM products WHERE productInCart = 1;
-END;
+-- CREATE OR ALTER PROCEDURE usp_getProductsInCart
+-- AS
+-- BEGIN
+--   SELECT * FROM products WHERE productInCart = 1;
+-- END;
 
-exec usp_getProductsInCart;
+-- exec usp_getProductsInCart;
