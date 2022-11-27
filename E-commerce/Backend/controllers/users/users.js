@@ -47,8 +47,6 @@ exports.login = async (req, res) => {
      .input('userEmail', userEmail)
      .execute('findUser')).recordset[0];
     
-    console.log(user);
-    
     if (user) {
       const checkPassword = await bcrypt.compare(userPassword, user.userPassword);
       if (checkPassword) {
