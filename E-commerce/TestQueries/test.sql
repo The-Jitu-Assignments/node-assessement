@@ -2,7 +2,7 @@
 use TutorialDB
 GO
 
--- select * from carBrands;
+select * from carBrands;
 
 -- products table
 -- CREATE TABLE products(
@@ -70,3 +70,10 @@ GO
 --     (id, productName, productDescription, price, imgUrl, discountRate)
 --   values (@id, @productName, @productDescription, @price, @imgUrl, @discountRate)
 -- END;
+
+
+CREATE OR ALTER PROCEDURE usp_getOneProduct(@id VARCHAR(50))
+AS
+BEGIN
+SELECT * FROM products WHERE id = @id
+END
