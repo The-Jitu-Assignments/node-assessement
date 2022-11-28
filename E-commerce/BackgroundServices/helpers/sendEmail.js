@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 
-exports.sendEmail = ({ from, to, subject, text }) => {
+exports.sendEmail = ({ from, to, subject, html }) => {
   const transporter = nodemailer.createTransport({
     service: "Gmail",
     secure: false,
@@ -10,7 +10,8 @@ exports.sendEmail = ({ from, to, subject, text }) => {
     }
   });
 
-  const msg = { from, to, subject, text };
+  const msg = { from, to, subject, html };
+  console.log(msg);
 
   return transporter.sendMail(msg);
 };

@@ -9,15 +9,13 @@ const welcomeEmailService = async () => {
     const users = await pool.request().execute('usp_getUsersToSendEmail')
     let foundUsers = users.recordset;
 
-    console.log(foundUsers);
-
     for (let user of foundUsers) {
-      ejs.renderFile('./template/email.ejs', {name: user.userName, email: user.userEmail}, async(error, data) => {
+      ejs.renderFile('./template/email.ejs', {name: user.userName, email: process.env.SMTP_USER}, async(error, data) => {
         await sendEmail({
           from: '',
           to: user.userEmail,
-          subject: `Welcome to ${user.userName}`,
-          text: data
+          subject: `Welcome to Bluck`,
+          html: data
         })
         await pool.request().input('id', user.id).execute('usp_updateReceivedEmail');
         console.log('email sent successfully');
