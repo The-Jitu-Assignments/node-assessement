@@ -37,7 +37,7 @@ export const updateProduct = createAsyncThunk('product/updateProduct',
     try {
       const res = await axios.put(`${url}/${id}`, values)
       console.log(res);
-      return { id, values: res.data.data}
+      return { id, values }
     } catch (error) {
       console.log(error);
     }
@@ -57,9 +57,9 @@ export const productSlice = createSlice({
       state.products = action.payload.data;
     });
     builder.addCase(updateProduct.fulfilled, (state, action) => {
-      // state.products = state.products.map((product) => (
-      //   product.id === action.payload.id? action.payload.values : product
-      // ))
+      state.products = state.products.map((product) => (
+        product.id === action.payload.id ? action.payload.values : product
+      ))
     })
   }
 })

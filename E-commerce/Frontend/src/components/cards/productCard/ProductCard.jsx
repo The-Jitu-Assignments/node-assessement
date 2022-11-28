@@ -13,7 +13,7 @@ const ProductCard = ({ data }) => {
   const { id, productInCart, ...payload } = data;
 
   const handleAddToCart = () => {
-    dispatch(updateProduct({ id, values: {payload, productInCart: productInCart + 1 } }));
+    dispatch(updateProduct({ id, values: {...payload, productInCart: productInCart + 1 } }));
   }
   return (
     <div className='product--card'>
