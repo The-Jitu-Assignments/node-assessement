@@ -2,7 +2,6 @@ import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { BiUpArrow, BiDownArrow } from 'react-icons/bi';
 import { AiOutlineDelete } from 'react-icons/ai';
-// import { decreaseItemQuantity } from '../../../features/products/productSlice';
 import { removeItemFromCart, increaseItemQuantity, decreaseItemQuantity } from '../../../features/cart/cartSlice';
 
 const CartCard = () => {
@@ -26,17 +25,17 @@ const CartCard = () => {
       {cart.map((item) => (
         <div key={item.id} className='cart--card'>
           <div className='cart--card__img'>
-            <img src={item.image} alt="cart-item" />
+            <img src={item.imgUrl} alt="cart-item" />
           </div>
           <div className='cart--card__details'>
             <div>
-              {item.name}
+              {item.productName}
             </div>
             <div className='cart--item__count'>
-              Quantity: {item.count}
+              Quantity: {item.quantity}
             </div>
             <div>
-              Ksh. {item.price * item.count}
+              Ksh. {item.price * item.quantity}
             </div>
           </div>
           <div className='cart--card__icons'>

@@ -134,3 +134,7 @@ GO
 -- BEGIN
 --   UPDATE users SET receivedEmail = 1 WHERE id = @id;
 -- END;
+
+-- delete from products where id = '7bc97751-22ac-4f68-8632-c1aa9556b8b9';
+
+-- select * from products;
