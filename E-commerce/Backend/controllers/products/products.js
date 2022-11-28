@@ -46,7 +46,7 @@ exports.createProduct = async (req, res) => {
       .input('discountRate', discountRate)
       .execute('usp_createOrUpdateProduct')
     return res.status(201).json({
-      msg: 'Todo Inserted'
+      msg: 'Product Inserted'
     })
   } catch (error) {
     res.status(500).json({
