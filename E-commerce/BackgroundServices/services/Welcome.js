@@ -12,7 +12,7 @@ const welcomeEmailService = async () => {
     console.log(foundUsers);
 
     for (let user of foundUsers) {
-      ejs.renderFile('templates/email.ejs', {name: user.userName, email: user.userEmail}, async(error, data) => {
+      ejs.renderFile('./template/email.ejs', {name: user.userName, email: user.userEmail}, async(error, data) => {
         await sendEmail({
           from: '',
           to: user.userEmail,
