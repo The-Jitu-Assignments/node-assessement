@@ -23,7 +23,7 @@ export const createProduct = createAsyncThunk('product/createProduct',
     try {
       await validateProductSchema(values)
       const res = await axios.post(url, values);
-      console.log(res);
+      toast.success(res.data.msg)
       dispatch(fetchProducts())
     } catch (error) {
       toast.error(error.message);
