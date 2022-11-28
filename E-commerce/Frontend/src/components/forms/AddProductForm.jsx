@@ -20,10 +20,10 @@ const AddProductForm = ({ onClose }) => {
     }))
   }
 
-  const { name, imageUrl, description, price, discountRate } = newProduct
+  const { productName, imgUrl, productDescription, price, discountRate } = newProduct
 
   const handleSubmit = () => {
-    dispatch(createProduct({ name, imageUrl, description, price, discountRate, count: 1 }));
+    dispatch(createProduct({ productName, imgUrl, productDescription, price, discountRate }));
     onClose();
     dispatch(fetchProducts());
   }
@@ -34,8 +34,8 @@ const AddProductForm = ({ onClose }) => {
         <input 
           type="text" 
           placeholder="enter product name" 
-          name='name' 
-          value={newProduct.name} 
+          name='productName' 
+          value={newProduct.productName} 
           onChange={handleChange} 
         />
       </div>
@@ -44,8 +44,8 @@ const AddProductForm = ({ onClose }) => {
         <input 
           type="text" 
           placeholder='enter an image url' 
-          name='imageUrl'
-          value={newProduct.imageUrl}
+          name='imgUrl'
+          value={newProduct.imgUrl}
           onChange={handleChange}
         />
       </div>
@@ -54,8 +54,8 @@ const AddProductForm = ({ onClose }) => {
         <textarea 
           type="text"  
           placeholder='enter a short description for the product' 
-          name='description'
-          value={newProduct.description}
+          name='productDescription'
+          value={newProduct.productDescription}
           onChange={handleChange}
         />
       </div>
