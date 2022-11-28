@@ -11,13 +11,15 @@ const Layout = ({ children }) => {
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.user);
   const [ sidebarContext ] = useContext(SidebarContext);
-  if (!user) {
-    return <Navigate to={"/login"} />
-  }
-
+  
   useEffect(() => {
     dispatch(fetchItems())
   }, []);
+  
+  if (!user) {
+    return <Navigate to={"/login"} />
+  };
+  
   return (
     <div className='layout'>
       {sidebarContext && (
