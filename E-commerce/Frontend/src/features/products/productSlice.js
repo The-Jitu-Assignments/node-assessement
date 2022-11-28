@@ -13,7 +13,7 @@ const initialState = {
 
 export const fetchProducts = createAsyncThunk('product/fetchProducts',
   async () => {
-    const res = await axios.get(url);
+    const res = await axios.get(url); 
     return res.data;
   }
 )
@@ -67,7 +67,7 @@ export const productSlice = createSlice({
       // state.products.push(action.payload);
     });
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.products = action.payload;
+      state.products = action.payload.data;
     })
   }
 })

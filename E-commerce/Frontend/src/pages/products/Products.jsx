@@ -8,8 +8,10 @@ import ProductCard from '../../components/cards/productCard/ProductCard';
 
 const Products = () => {
   const { products } = useSelector(state => state.product);
+  console.log(products);
   const [open, setIsOpen] = useState(false);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchProducts())
   }, []);
