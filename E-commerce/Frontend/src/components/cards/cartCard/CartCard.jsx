@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { BiUpArrow, BiDownArrow } from 'react-icons/bi';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { removeItemFromCart, increaseItemQuantity, decreaseItemQuantity } from '../../../features/cart/cartSlice';
+import { updateProduct } from '../../../features/products/productSlice';
 
 const CartCard = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,11 @@ const CartCard = () => {
       price: data.price,
       count: data.count - 1
     }}))
+  }
+
+  const handleRemoveItem = (data) => {
+    const { id, productInCart, ...payload } = data;
+    dispatch(updateProduct({ id, values: { ...payload, productInCart: productInCart - 1 }}))
   }
 
   const cartItem = useMemo(() => (
@@ -49,7 +55,7 @@ const CartCard = () => {
             }}))}>
               <BiUpArrow />
             </button>
-            <button className='cart--card__btn' onClick={() => dispatch(removeItemFromCart(item.cartId))}>
+            <button className='cart--card__btn' onClick={() => handleRemoveItem(item)}>
               <AiOutlineDelete />
             </button>
             <button className='cart--card__btn' onClick={() => handleRemove(item)} disabled={item.count === 1}>
