@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = 'https://react-grid-dashboard-857a2-default-rtdb.firebaseio.com/cart.json';
+// const url = 'https://react-grid-dashboard-857a2-default-rtdb.firebaseio.com/cart.json';
+const url = "http://localhost:4000/cart";
 
 const initialState = {
   cart: []
