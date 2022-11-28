@@ -34,7 +34,7 @@ export const createProduct = createAsyncThunk('product/createProduct',
 export const updateProduct = createAsyncThunk('product/updateProduct',
   async ({id, values}, {dispatch}) => {
     try {
-      const res = await axios.put(`url/${id}`, values)
+      const res = await axios.put(`${url}/${id}`, values)
       console.log(res);
       return { id, values: res.data.data}
     } catch (error) {

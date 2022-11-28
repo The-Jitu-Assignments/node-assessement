@@ -1,11 +1,20 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../../../features/cart/cartSlice';
+import { updateProduct } from '../../../features/products/productSlice';
 import '../cards.css';
 
-const ProductCard = ({ data, id }) => {
+const ProductCard = ({ data }) => {
+  console.log(data);
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.cart);
+  console.log('product', cart);
+
+  const { id, productInCart, ...payload } = data;
+
+  const handleAddToCart = () => {
+    dispatch(updateProduct({ id, values: {payload, productInCart: productInCart + 1 } }));
+  }
   return (
     <div className='product--card'>
       <div className='product--card__top'>
@@ -23,7 +32,7 @@ const ProductCard = ({ data, id }) => {
           <div className='product--rate'>
             {data.discountRate}%
           </div>
-          <button className='product--cart' onClick={() => dispatch(addToCart(data))} disabled={cart.some(cartItem => cartItem.id === id)}>
+          <button className='product--cart' onClick={handleAddToCart} disabled={cart.some(cartItem => cartItem.id === data.id)}>
             Add to Cart
           </button>
         </div>
