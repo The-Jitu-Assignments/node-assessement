@@ -6,9 +6,9 @@ import './forms.css';
 const AddProductForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const [newProduct, setNewProduct] = useState({
-    name: '',
-    imageUrl: '',
-    description: '',
+    productName: '',
+    imgUrl: '',
+    productDescription: '',
     price: '',
     discountRate: ''
   })
