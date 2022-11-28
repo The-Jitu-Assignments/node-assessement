@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// const url = 'https://react-grid-dashboard-857a2-default-rtdb.firebaseio.com/cart.json';
 const url = "http://localhost:4000/cart";
 
 const initialState = {
@@ -11,18 +10,19 @@ const initialState = {
 export const fetchItems = createAsyncThunk('cart/fetchItems',
   async () => {
     const res = await axios.get(url);
-    let cartData = [];
-    let data = res.data;
-    for (let key in data) {
-      cartData.push({
-        cartId: key,
-        id: data[key].id,
-        name: data[key].name,
-        image: data[key].image,
-        price: data[key].price,
-        count: data[key].count
-      })
-    }
+    console.log(res);
+    // let cartData = [];
+    // let data = res.data;
+    // for (let key in data) {
+    //   cartData.push({
+    //     cartId: key,
+    //     id: data[key].id,
+    //     name: data[key].name,
+    //     image: data[key].image,
+    //     price: data[key].price,
+    //     count: data[key].count
+    //   })
+    // }
     return cartData;
   }
 )
