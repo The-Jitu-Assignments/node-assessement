@@ -9,9 +9,7 @@ const initialState = {
 
 export const fetchItems = createAsyncThunk('cart/fetchItems',
   async () => {
-    const res = await axios.get(url);
-    console.log('cart', res);
-    
+    const res = await axios.get(url);   
     return res.data.data;
   }
 )
