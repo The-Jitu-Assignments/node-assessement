@@ -16,7 +16,7 @@ const Header = () => {
   const [open, setIsOpen] = useState(false)
   const { cart } = useSelector((state) => state.cart);
 
-  const totalProducts = cart.reduce((total, product) => total + product.count, 0);
+  const totalProducts = cart.reduce((total, product) => total + product.quantity, 0);
 
   return (
     <div className='header'>
