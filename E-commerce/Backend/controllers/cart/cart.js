@@ -4,7 +4,7 @@ const sql = require('mssql');
 exports.getAllProductsInCart = async (req, res) => {
   try {
     const pool = await sql.connect(sqlConfig);
-    const response = (await pool.request().execute('dbo.usp_getAllProductsInCart'));
+    const response = (await pool.request().execute('dbo.usp_getProductsInCart'));
     const products = response.recordset
     return res.status(200).json({
       data: products

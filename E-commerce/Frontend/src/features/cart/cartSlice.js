@@ -10,7 +10,7 @@ const initialState = {
 export const fetchItems = createAsyncThunk('cart/fetchItems',
   async () => {
     const res = await axios.get(url);
-    console.log(res);
+    console.log('cart', res);
     // let cartData = [];
     // let data = res.data;
     // for (let key in data) {
