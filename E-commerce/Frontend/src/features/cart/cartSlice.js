@@ -11,19 +11,8 @@ export const fetchItems = createAsyncThunk('cart/fetchItems',
   async () => {
     const res = await axios.get(url);
     console.log('cart', res);
-    // let cartData = [];
-    // let data = res.data;
-    // for (let key in data) {
-    //   cartData.push({
-    //     cartId: key,
-    //     id: data[key].id,
-    //     name: data[key].name,
-    //     image: data[key].image,
-    //     price: data[key].price,
-    //     count: data[key].count
-    //   })
-    // }
-    return cartData;
+    
+    return res.data.data;
   }
 )
 

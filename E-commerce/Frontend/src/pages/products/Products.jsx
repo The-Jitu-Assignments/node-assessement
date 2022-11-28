@@ -8,7 +8,8 @@ import ProductCard from '../../components/cards/productCard/ProductCard';
 
 const Products = () => {
   const { products } = useSelector(state => state.product);
-  console.log(products);
+  const { cart } = useSelector(state => state.cart);
+  console.log('cart', cart);
   const [open, setIsOpen] = useState(false);
   const dispatch = useDispatch();
 
