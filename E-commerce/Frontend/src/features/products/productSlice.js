@@ -3,7 +3,6 @@ import axios from "axios";
 import { validateProductSchema } from "../../helpers/validation";
 import { toast } from "react-toastify";
 
-// const url = 'https://react-grid-dashboard-857a2-default-rtdb.firebaseio.com/react-grid-dashboard.json';
 const url = 'http://localhost:4000/products'
 
 const initialState = {
@@ -15,21 +14,7 @@ const initialState = {
 export const fetchProducts = createAsyncThunk('product/fetchProducts',
   async () => {
     const res = await axios.get(url);
-    console.log(res);
-    let myData = [];
-    let fetchedData = res.data;
-    for (let key in fetchedData) {
-      myData.push({
-        id: key,
-        name: fetchedData[key].name,
-        description: fetchedData[key].description,
-        image: fetchedData[key].imageUrl,
-        price: fetchedData[key].price,
-        discount: fetchedData[key].discountRate,
-        count: fetchedData[key].count
-      })
-    }
-    return myData
+    return res.data;
   }
 )
 
