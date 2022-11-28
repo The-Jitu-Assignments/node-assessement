@@ -23,6 +23,7 @@ export const createProduct = createAsyncThunk('product/createProduct',
     try {
       await validateProductSchema(values)
       const res = await axios.post(url, values);
+      console.log(res);
       dispatch(fetchProducts())
     } catch (error) {
       toast.error(error.message);
@@ -64,7 +65,8 @@ export const productSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(createProduct.fulfilled, (state, action) => {
-      // state.products.push(action.payload);
+      state.message = action.payload;
+      // state.products.push(action.payload.data);
     });
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.products = action.payload.data;
