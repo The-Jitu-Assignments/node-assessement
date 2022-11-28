@@ -1,0 +1,84 @@
+.sidebar {
+  height: 100%;
+  width: 100%;
+  background-color: var(--darkBlue);
+}
+
+.sidebar--header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: white;
+  height: 50px;
+  padding: 0 20px;
+  border-bottom: 1px solid white
+}
+
+.app--title {
+  font-size: xx-large;
+  font-weight: bolder;
+  letter-spacing: 1px;
+}
+
+.sidebar--btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding: 10px;
+  font-weight: 700;
+}
+
+.sidebar--profile {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  gap: 10px;
+  color: white;
+  margin: 20px 0;
+  padding: 0 20px;
+}
+
+.profile--intro {
+  font-size: 26px;
+}
+
+.profile--email {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.sidebar--links {
+  padding: 0 20px;
+  margin: 20px 0;
+}
+
+.sidebar--links h3 {
+  color: white;
+  font-size: large;
+}
+
+.sidebar--links__item {
+  color: white;
+}
+
+.sidebar--links__item ul li {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  gap: 12px;
+  list-style: none;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.sidebar--icons {
+  display: flex;
+  font-size: 1.2rem;
+  color: white;
+}

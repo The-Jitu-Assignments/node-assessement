@@ -1,0 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #2A0944;
+}
+
+:root {
+  --darkBlue: #2A0944;
+  --darkGreen: #3FA796;
+  --darkYellow: #FEC260;
+  --darkMaroon: #A10035;
+}

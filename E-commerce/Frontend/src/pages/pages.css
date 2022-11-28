@@ -1,0 +1,110 @@
+/* Login Page */
+.login--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.login--form {
+  background-color: azure;
+  width: 40%;
+  height: 400px;
+  box-shadow: 1px 1px 20px -2px indigo;
+  padding: 0 25px;
+  border-radius: 10px;
+}
+
+.login--form h2 {
+  padding: 25px 0;
+}
+
+.login--data {
+  margin-bottom: 25px;
+}
+
+.login--data label {
+  display: none;
+}
+
+.login--data input {
+  width: 100%;
+  padding: 5px 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid gray;
+}
+
+.login--btn {
+  padding: 10px 40px;
+  cursor: pointer;
+  background-color: indigo;
+  outline: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.auth--btn__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.auth--link {
+  cursor: pointer;
+  color: indigo;
+}
+
+/* Homepage */
+
+.homepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.homepage--intro {
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.homepage--title {
+  font-size: 50px;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.homepage--btn {
+  color: var(--darkBlue);
+  border: 1px solid var(--darkBlue);
+  padding: 20px 80px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.homepage--btn:hover {
+  background-color: var(--darkBlue);
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .login--form {
+    width: 90%;
+  }
+
+  .auth--btn__container {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+}

@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--darkBlue);
+  position: relative;
+}
+
+.header--cart {
+  cursor: pointer;
+}
+
+.cart--count {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  bottom: 10px;
+  height: 15px;
+  background-color: var(--darkYellow);
+  padding: 4px;
+}

@@ -1,0 +1,24 @@
+.contact--page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  gap: 20px;
+  height: 100%;
+}
+
+.contact--page h2 {
+  font-size: 30px;
+  font-weight: bolder;
+  letter-spacing: 1px;
+}
+
+.contact--details {
+  font-size: 20px;
+}
+
+.contact--icons {
+  display: flex;
+  gap: 20px;
+}
