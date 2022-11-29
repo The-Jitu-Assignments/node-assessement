@@ -23,6 +23,22 @@ const RegisterPage = () => {
 
   const handleSubmit = () => {
     dispatch(registerUser(user));
+    if (successStatus) {
+      navigate('/login');
+      setUser({
+        name: '',
+        email: '',
+        password: ''
+      })
+      console.log('working')
+    } else {
+      setUser({
+        name: '',
+        email: '',
+        password: ''
+      })
+      console.log('not working')
+    }
     // navigate('/')
   };
 
