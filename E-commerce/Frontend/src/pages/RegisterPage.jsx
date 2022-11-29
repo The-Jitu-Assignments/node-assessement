@@ -1,9 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../features/user/UserSlice';
 
 const RegisterPage = () => {
+  const { successStatus, error } = useSelector(state => state.user);
+  console.log(successStatus, 'error', error);
   const [user, setUser] = React.useState({
     name: '',
     email: '',

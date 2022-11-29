@@ -7,18 +7,23 @@ const url = 'http://localhost:4000'
 
 const initialState = {
   user: null,
-  successStatus: false
+  successStatus: false,
+  error: ''
 };
 
 export const registerUser = createAsyncThunk('user/registerUser',
-  async (payload) => {
+  async (payload, thunkApi) => {
+    console.log(thunkApi)
     try {
       await validateSignUpSchema(payload);
       const res = await axios.post(`${url}/signup`, payload);
       toast.success(res.data.msg);
       console.log(res)
+      return res;
     } catch (error) {
       toast.error(error.response ? error.response.data.msg : error.message);
+      let errorValue = error.response ? error.response.data.msg : error.message;
+      return thunkApi.rejectWithValue(errorValue);
     }
 });
 
@@ -28,13 +33,13 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(registerUser.pending, (state) => {
-      state.userStatus = false;
+      state.successStatus = false;
     })
     builder.addCase(registerUser.fulfilled, (state) => {
       state.successStatus = true;
     });
     builder.addCase(registerUser.rejected, (state) => {
-      state.userStatus = false;
+      state.successStatus = false;
     });
   }
 });
