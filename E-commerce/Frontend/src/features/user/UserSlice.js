@@ -21,17 +21,7 @@ export const registerUser = createAsyncThunk('user/registerUser',
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {
-    // register: (state, action) => {
-    //   state.user = action.payload
-    // },
-    // login: (state, action) => {
-    //   state.user = action.payload
-    // },
-    // logout: (state) => {
-    //   state.user = null
-    // }
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(registerUser.pending, (state) => {
       state.userStatus = true;
