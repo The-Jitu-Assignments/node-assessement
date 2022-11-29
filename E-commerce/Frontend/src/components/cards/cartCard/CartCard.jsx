@@ -2,10 +2,10 @@ import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { BiUpArrow, BiDownArrow } from 'react-icons/bi';
 import { AiOutlineDelete } from 'react-icons/ai';
-import { increaseItemQuantity, decreaseItemQuantity, fetchItems } from '../../../features/cart/cartSlice';
+import { decreaseItemQuantity, fetchItems } from '../../../features/cart/cartSlice';
 import { fetchProducts, updateProduct } from '../../../features/products/productSlice';
 
-const CartCard = ({ cart, removeItemFromCart }) => {
+const CartCard = ({ cart, removeItemFromCart, increaseItemQuantity }) => {
   const dispatch = useDispatch();
 
   const handleRemove = (data) => {
@@ -38,14 +38,7 @@ const CartCard = ({ cart, removeItemFromCart }) => {
             </div>
           </div>
           <div className='cart--card__icons'>
-            <button className='cart--card__btn' onClick={() => dispatch(increaseItemQuantity({id: item.cartId, value: {
-              cartId: item.cartId,
-              id: item.id,
-              name: item.name,
-              image: item.image,
-              price: item.price,
-              count: item.count + 1,
-            }}))}>
+            <button className='cart--card__btn' onClick={() => increaseItemQuantity(item)}>
               <BiUpArrow />
             </button>
             <button className='cart--card__btn' onClick={() => removeItemFromCart(item)}>
