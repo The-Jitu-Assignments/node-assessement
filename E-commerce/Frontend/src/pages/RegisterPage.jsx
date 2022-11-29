@@ -22,17 +22,12 @@ const RegisterPage = () => {
 
   const handleSubmit = async () => {
     const res = await dispatch(registerUser(user));
-    console.log(res);
     if (res.payload.message === 'User created successfully') {
       navigate('/login')
     }
     return;
 
   };
-
-  // React.useEffect(() => {
-  //   if (successStatus) navigate('/');
-  // }, [ successStatus ])
 
   return (
     <div className='login--container'>
