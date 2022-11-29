@@ -16,18 +16,23 @@ const CartOverlay = ({ open, onClose }) => {
 
   const removeItemFromCart = useCallback((data) => {
     const { id, productInCart, quantity, ...payload } = data;
-    dispatch(updateProduct({ id, values: { ...payload, productInCart: 0, quantity: 1 }}))
+    dispatch(updateProduct({ id, values: { ...payload, productInCart: 0, quantity: 1 }, msg: 'Item removed from cart' }))
   }, [productStatus]);
 
   const incrementQuantity = useCallback((data) => {
     const { id, quantity, ...payload } = data;
-    dispatch(updateProduct({ id, values: {...payload, quantity: quantity + 1 }}));
+    dispatch(updateProduct({ id, values: {...payload, quantity: quantity + 1 }, msg: 'Quantity added' }));
+  }, [ productStatus ]);
+
+  const decrementQuantity = useCallback((data) => {
+    const { id, quantity,...payload } = data;
+    dispatch(updateProduct({ id, values: {...payload, quantity: quantity - 1 }, msg: 'Quantity removed' }));
   }, [ productStatus ]);
 
 
   React.useEffect(() => {
     dispatch(fetchItems());
-  }, [ removeItemFromCart, incrementQuantity ]);
+  }, [ removeItemFromCart, incrementQuantity, decrementQuantity ]);
   
   if (!open) return;
   return (

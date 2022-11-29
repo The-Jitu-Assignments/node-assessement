@@ -33,11 +33,11 @@ export const createProduct = createAsyncThunk('product/createProduct',
 );
 
 export const updateProduct = createAsyncThunk('product/updateProduct',
-  async ({id, values}, {dispatch}) => {
+  async ({id, values, msg}, {dispatch}) => {
     console.log(values)
     try {
       const res = await axios.put(`${url}/${id}`, values)
-      toast.success(res.data.msg);
+      toast.success(msg);
       dispatch(fetchProducts());
       return { id, values }
     } catch (error) {

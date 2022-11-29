@@ -15,7 +15,7 @@ const Products = () => {
 
   const handleAddToCart = useCallback((product) => {
     const { id, productInCart, ...payload } = product;
-    dispatch(updateProduct({ id, values: { ...payload, productInCart: 1 }}))
+    dispatch(updateProduct({ id, values: { ...payload, productInCart: 1 }, msg: 'Item added to cart' }))
   }, [productStatus]);
 
   useEffect(() => {
