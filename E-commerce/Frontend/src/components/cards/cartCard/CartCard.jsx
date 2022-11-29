@@ -7,8 +7,6 @@ import { fetchProducts, updateProduct } from '../../../features/products/product
 
 const CartCard = ({ cart, removeItemFromCart }) => {
   const dispatch = useDispatch();
-  // const { cart } = useSelector(state => state.cart);
-  // console.log(cart);
 
   const handleRemove = (data) => {
     dispatch(decreaseItemQuantity({ id: data.cartId, value: {
@@ -19,12 +17,6 @@ const CartCard = ({ cart, removeItemFromCart }) => {
       price: data.price,
       count: data.count - 1
     }}))
-  }
-
-  const handleRemoveItem = (data) => {
-    const { id, productInCart, ...payload } = data;
-    dispatch(updateProduct({ id, values: { ...payload, productInCart: productInCart - 1 }}));
-    dispatch(fetchProducts());
   }
 
   const cartItem = useMemo(() => (

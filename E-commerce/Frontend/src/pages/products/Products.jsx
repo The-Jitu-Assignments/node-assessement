@@ -30,7 +30,7 @@ const Products = () => {
         (
           <>
           {products?.map((data) => (
-            <ProductCard id={data.id} key={data.id} data={data} selectItem={() => dispatch(addToCart(data.id))} />
+            <ProductCard key={data.id} data={data} />
           ))}
           </>
         )  : (<div>We currently do not have any products</div>)
