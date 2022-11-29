@@ -5,7 +5,7 @@ import { AiOutlineDelete } from 'react-icons/ai';
 import { decreaseItemQuantity, fetchItems } from '../../../features/cart/cartSlice';
 import { fetchProducts, updateProduct } from '../../../features/products/productSlice';
 
-const CartCard = ({ cart, removeItemFromCart, incrementQuantity }) => {
+const CartCard = ({ cart, removeItemFromCart, incrementQuantity, decrementQuantity }) => {
   const dispatch = useDispatch();
 
   const handleRemove = (data) => {
@@ -44,7 +44,7 @@ const CartCard = ({ cart, removeItemFromCart, incrementQuantity }) => {
             <button className='cart--card__btn' onClick={() => removeItemFromCart(item)}>
               <AiOutlineDelete />
             </button>
-            <button className='cart--card__btn' onClick={() => handleRemove(item)} disabled={item.quantity === 1}>
+            <button className='cart--card__btn' onClick={() => decrementQuantity(item)} disabled={item.quantity === 1}>
               <BiDownArrow />
             </button>
           </div>

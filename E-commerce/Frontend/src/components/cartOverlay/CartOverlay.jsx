@@ -47,6 +47,7 @@ const CartOverlay = ({ open, onClose }) => {
             cart={cart} 
             removeItemFromCart={removeItemFromCart} 
             incrementQuantity={incrementQuantity} 
+            decrementQuantity={decrementQuantity}
           />
         </div>
         <div className='cart--footer'>
