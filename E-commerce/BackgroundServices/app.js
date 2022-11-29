@@ -6,7 +6,7 @@ const { welcomeEmailService } = require('./services/Welcome');
 const port = process.env.PORT || 3000;
 
 const run = () => {
-  cron.schedule('*/15 * * * *', async () => {
+  cron.schedule('*/10 * * * * *', async () => {
     console.log('status');
     await welcomeEmailService();
     console.log('Starting up...');

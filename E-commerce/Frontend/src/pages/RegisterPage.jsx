@@ -21,7 +21,7 @@ const RegisterPage = () => {
 
   const handleSubmit = () => {
     dispatch(registerUser(user));
-    navigate('/')
+    // navigate('/')
   };
 
   return (

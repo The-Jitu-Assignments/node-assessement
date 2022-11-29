@@ -18,7 +18,7 @@ export const registerUser = createAsyncThunk('user/registerUser',
       toast.success(res.data.msg);
       console.log(res)
     } catch (error) {
-      toast.error(error ? error.response.data.msg : error.message);
+      toast.error(error.response ? error.response.data.msg : error.message);
     }
 });
 
@@ -30,7 +30,7 @@ export const userSlice = createSlice({
     builder.addCase(registerUser.pending, (state) => {
       state.userStatus = false;
     })
-    builder.addCase(registerUser.fulfilled, (state, action) => {
+    builder.addCase(registerUser.fulfilled, (state) => {
       state.successStatus = true;
     });
     builder.addCase(registerUser.rejected, (state) => {
