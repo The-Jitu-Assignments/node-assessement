@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import CartCard from '../cards/cartCard/CartCard';
 import './cart.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../../features/products/productSlice';
+import { fetchProducts, updateProduct } from '../../features/products/productSlice';
 import { fetchItems } from '../../features/cart/cartSlice';
 
 const CartOverlay = ({ open, onClose }) => {
@@ -11,10 +11,16 @@ const CartOverlay = ({ open, onClose }) => {
   console.log(cart);
   
   const totalProducts = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  
+
+  const removeItemFromCart = useCallback((cart) => {
+    const { id, productInCart, ...payload } = cart;
+    dispatch(updateProduct({ id, values: { ...payload, productInCart: 0 }}))
+  }, [ cart ]);
+
+
   React.useEffect(() => {
     dispatch(fetchItems());
-  }, []);
+  }, [ removeItemFromCart ]);
   
   if (!open) return;
   return (
