@@ -9,6 +9,8 @@ const CartOverlay = ({ open, onClose }) => {
   const dispatch = useDispatch();
   const { productStatus } = useSelector(state => state.product);
   const { cart } = useSelector(state => state.cart);
+
+  console.log(cart);
   
   const totalProducts = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
@@ -17,10 +19,15 @@ const CartOverlay = ({ open, onClose }) => {
     dispatch(updateProduct({ id, values: { ...payload, productInCart: 0, quantity: 1 }}))
   }, [productStatus]);
 
+  const incrementQuantity = useCallback((data) => {
+    const { id, quantity, ...payload } = data;
+    dispatch(updateProduct({ id, values: {...payload, quantity: quantity + 1 }}));
+  }, [ productStatus ]);
+
 
   React.useEffect(() => {
     dispatch(fetchItems());
-  }, [ removeItemFromCart ]);
+  }, [ removeItemFromCart, incrementQuantity ]);
   
   if (!open) return;
   return (
