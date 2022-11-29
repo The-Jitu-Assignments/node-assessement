@@ -1,21 +1,9 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-// import { addToCart } from '../../../features/cart/cartSlice';
-import { fetchProducts, updateProduct } from '../../../features/products/productSlice';
+import { useSelector } from 'react-redux';
 import '../cards.css';
 
 const ProductCard = ({ data, addToCart }) => {
-  console.log(data);
-  const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.cart);
-  console.log('product', cart);
-
-  const { id, productInCart, ...payload } = data;
-
-  // const handleAddToCart = () => {
-  //   dispatch(updateProduct({ id, values: {...payload, productInCart: productInCart + 1 } }));
-  //   dispatch(fetchProducts());
-  // }
   return (
     <div className='product--card'>
       <div className='product--card__top'>
