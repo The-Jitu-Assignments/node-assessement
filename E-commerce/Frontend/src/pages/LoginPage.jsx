@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { login } from '../features/user/UserSlice';
+// import { login } from '../features/user/UserSlice';
 import './pages.css';
 
 const LoginPage = () => {
@@ -21,7 +21,7 @@ const LoginPage = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    dispatch(login(user))
+    // dispatch(login(user))
     navigate('/')
   }
 

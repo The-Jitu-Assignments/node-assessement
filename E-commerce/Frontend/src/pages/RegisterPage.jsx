@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { register } from '../features/user/UserSlice';
+import { registerUser } from '../features/user/UserSlice';
 
 const RegisterPage = () => {
   const [user, setUser] = React.useState({
@@ -20,7 +20,7 @@ const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    dispatch(register(user));
+    dispatch(registerUser(user));
     navigate('/')
   };
 

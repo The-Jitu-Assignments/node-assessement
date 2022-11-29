@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './sidebar.css';
 import { BiHomeSmile, BiShoppingBag, BiLogOutCircle } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../features/user/UserSlice';
+// import { login } from '../../features/user/UserSlice';
 import { SidebarContext } from '../../context/SidebarContext';
 import { SiAboutdotme } from 'react-icons/si'
 import { MdOutlineContactless } from 'react-icons/md'
@@ -77,7 +77,7 @@ const Sidebar = () => {
                 </span>
               </li>
             ))}
-            <li onClick={() => dispatch(login(false))}>
+            <li>
               <span className='sidebar--icons'>
                 <BiLogOutCircle />
               </span>
