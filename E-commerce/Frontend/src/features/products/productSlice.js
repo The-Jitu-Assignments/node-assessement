@@ -8,7 +8,8 @@ const url = 'http://localhost:4000/products'
 const initialState = {
   products: [],
   cart: [],
-  message: ''
+  message: '',
+  productStatus: false
 };
 
 export const fetchProducts = createAsyncThunk('product/fetchProducts',
@@ -57,10 +58,14 @@ export const productSlice = createSlice({
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.products = action.payload.data;
     });
+    builder.addCase(updateProduct.pending, (state) => {
+      state.productStatus = true
+    });
     builder.addCase(updateProduct.fulfilled, (state, action) => {
       state.products = state.products.map((product) => (
         product.id === action.payload.id ? action.payload.values : product
       ))
+      state.productStatus = false;
     })
   }
 })

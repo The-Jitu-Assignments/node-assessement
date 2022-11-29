@@ -67,11 +67,17 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers (builder) {
+    builder.addCase(addToCart.pending, (state) => {
+      state.status = true;
+    })
     builder.addCase(addToCart.fulfilled, (state, action) => {
       console.log(action)
+      state.status = false;
+      // state.cart = action.payload;
     });
     builder.addCase(fetchItems.fulfilled, (state, action) => {
       state.cart = action.payload;
+
     });
     builder.addCase(increaseItemQuantity.fulfilled, (state, action) => {
       state.cart = state.cart.map((product) => {

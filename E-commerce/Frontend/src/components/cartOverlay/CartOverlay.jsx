@@ -15,7 +15,7 @@ const CartOverlay = ({ open, onClose }) => {
   const removeItemFromCart = useCallback((data) => {
     const { id, productInCart, ...payload } = data;
     dispatch(updateProduct({ id, values: { ...payload, productInCart: 0 }}))
-  }, [cart]);
+  }, []);
 
 
   React.useEffect(() => {
