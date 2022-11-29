@@ -5,10 +5,10 @@ import { AiOutlineDelete } from 'react-icons/ai';
 import { removeItemFromCart, increaseItemQuantity, decreaseItemQuantity, fetchItems } from '../../../features/cart/cartSlice';
 import { fetchProducts, updateProduct } from '../../../features/products/productSlice';
 
-const CartCard = () => {
+const CartCard = ({ cart }) => {
   const dispatch = useDispatch();
-  const { cart } = useSelector(state => state.cart);
-  console.log(cart);
+  // const { cart } = useSelector(state => state.cart);
+  // console.log(cart);
 
   const handleRemove = (data) => {
     dispatch(decreaseItemQuantity({ id: data.cartId, value: {

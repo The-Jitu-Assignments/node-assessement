@@ -9,14 +9,14 @@ const CartOverlay = ({ open, onClose }) => {
   const dispatch = useDispatch();
   const { cart } = useSelector(state => state.cart);
   console.log(cart);
-  if (!open) return;
-
+  
   const totalProducts = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-
+  
   React.useEffect(() => {
     dispatch(fetchItems());
   }, []);
-
+  
+  if (!open) return;
   return (
     <div className='overlay' onClick={onClose}>
       <div className='cart--body' onClick={(e) => e.stopPropagation()}>
@@ -25,7 +25,7 @@ const CartOverlay = ({ open, onClose }) => {
           <div onClick={onClose} className='closeBtn'>x</div>
         </div>
         <div className='cart--item__container'>
-          <CartCard />
+          <CartCard cart={cart} />
         </div>
         <div className='cart--footer'>
           Your Total Price is : Ksh. {totalProducts}
