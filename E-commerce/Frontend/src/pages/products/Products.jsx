@@ -3,7 +3,7 @@ import Modal from '../../components/modal/Modal';
 import './products.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts, updateProduct } from '../../features/products/productSlice';
-import { addToCart } from '../../features/cart/cartSlice';
+// import { addToCart } from '../../features/cart/cartSlice';
 import ProductCard from '../../components/cards/productCard/ProductCard';
 
 const Products = () => {
@@ -40,7 +40,7 @@ const Products = () => {
         (
           <>
           {products?.map((data) => (
-            <ProductCard key={data.id} data={data} />
+            <ProductCard key={data.id} data={data} addToCart={handleAddToCart} />
           ))}
           </>
         )  : (<div>We currently do not have any products</div>)
