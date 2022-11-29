@@ -72,7 +72,7 @@ exports.updateProduct = async (req, res) => {
       .input('productDeleted', productDeleted)
       .execute('usp_createOrUpdateProduct')
     return res.status(200).json({
-      msg: 'Todo Updated'
+      msg: 'Success 🎉🎉🎉'
     })
   } catch (error) {
     res.status(500).json({
