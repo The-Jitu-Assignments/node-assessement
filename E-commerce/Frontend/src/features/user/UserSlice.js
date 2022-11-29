@@ -29,7 +29,15 @@ export const userSlice = createSlice({
     // }
   },
   extraReducers: (builder) => {
-    builder.addCase()
+    builder.addCase(registerUser.pending, (state) => {
+      state.userStatus = true;
+    })
+    builder.addCase(registerUser.fulfilled, (state, action) => {
+      state.userStatus = false;
+    });
+    builder.addCase(registerUser.rejected, (state) => {
+      state.userStatus = true;
+    });
   }
 });
 
