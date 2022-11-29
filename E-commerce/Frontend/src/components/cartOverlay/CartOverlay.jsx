@@ -38,7 +38,11 @@ const CartOverlay = ({ open, onClose }) => {
           <div onClick={onClose} className='closeBtn'>x</div>
         </div>
         <div className='cart--item__container'>
-          <CartCard cart={cart} removeItemFromCart={removeItemFromCart} />
+          <CartCard 
+            cart={cart} 
+            removeItemFromCart={removeItemFromCart} 
+            incrementQuantity={incrementQuantity} 
+          />
         </div>
         <div className='cart--footer'>
           Your Total Price is : Ksh. {totalProducts}
