@@ -7,7 +7,7 @@ const url = 'http://localhost:4000'
 
 const initialState = {
   user: null,
-  userStatus: false
+  successStatus: false
 };
 
 export const registerUser = createAsyncThunk('user/registerUser',
@@ -28,13 +28,13 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(registerUser.pending, (state) => {
-      state.userStatus = true;
+      state.userStatus = false;
     })
     builder.addCase(registerUser.fulfilled, (state, action) => {
-      state.userStatus = false;
+      state.successStatus = true;
     });
     builder.addCase(registerUser.rejected, (state) => {
-      state.userStatus = true;
+      state.userStatus = false;
     });
   }
 });
