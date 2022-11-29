@@ -4,9 +4,10 @@ import './products.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts, updateProduct } from '../../features/products/productSlice';
 import ProductCard from '../../components/cards/productCard/ProductCard';
+import { fetchItems } from '../../features/cart/cartSlice';
 
 const Products = () => {
-  const { products } = useSelector(state => state.product);
+  const { products, productStatus } = useSelector(state => state.product);
   const { cart } = useSelector(state => state.cart);
   console.log('cart', cart);
   const [open, setIsOpen] = useState(false);
@@ -15,10 +16,11 @@ const Products = () => {
   const handleAddToCart = useCallback((product) => {
     const { id, productInCart, ...payload } = product;
     dispatch(updateProduct({ id, values: { ...payload, productInCart: 1 }}))
-  }, []);
+  }, [productStatus]);
 
   useEffect(() => {
-    dispatch(fetchProducts())
+    dispatch(fetchProducts());
+    dispatch(fetchItems());
   }, [handleAddToCart]);
 
   return (
