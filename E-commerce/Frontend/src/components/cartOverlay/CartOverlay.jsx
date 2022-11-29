@@ -7,15 +7,15 @@ import { fetchItems } from '../../features/cart/cartSlice';
 
 const CartOverlay = ({ open, onClose }) => {
   const dispatch = useDispatch();
+  const { productStatus } = useSelector(state => state.product);
   const { cart } = useSelector(state => state.cart);
-  console.log(cart);
   
   const totalProducts = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
   const removeItemFromCart = useCallback((data) => {
-    const { id, productInCart, ...payload } = data;
-    dispatch(updateProduct({ id, values: { ...payload, productInCart: 0 }}))
-  }, []);
+    const { id, productInCart, quantity, ...payload } = data;
+    dispatch(updateProduct({ id, values: { ...payload, productInCart: 0, quantity: 1 }}))
+  }, [productStatus]);
 
 
   React.useEffect(() => {
