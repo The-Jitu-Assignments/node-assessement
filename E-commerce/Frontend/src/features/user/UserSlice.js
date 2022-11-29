@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { validateSignUpSchema } from "../../helpers/validation";
+import { toast } from "react-toastify";
 
 const url = 'http://localhost:4000'
 
@@ -9,12 +11,14 @@ const initialState = {
 };
 
 export const registerUser = createAsyncThunk('user/registerUser',
-  async (payload, { dispatch }) => {
+  async (payload) => {
     try {
-      const res = await axios.post(`${url}/signup`, payload)
+      await validateSignUpSchema(payload);
+      const res = await axios.post(`${url}/signup`, payload);
+      toast.success(res.data.msg);
       console.log(res)
     } catch (error) {
-      console.log(error)
+      toast.error(error ? error.response.data.msg : error.message);
     }
 });
 
