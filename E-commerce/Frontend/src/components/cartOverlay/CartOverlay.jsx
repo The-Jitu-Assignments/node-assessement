@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import CartCard from '../cards/cartCard/CartCard';
 import './cart.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts, updateProduct } from '../../features/products/productSlice';
+import { updateProduct } from '../../features/products/productSlice';
 import { fetchItems } from '../../features/cart/cartSlice';
 
 const CartOverlay = ({ open, onClose }) => {
