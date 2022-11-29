@@ -13,16 +13,18 @@ const initialState = {
 
 export const registerUser = createAsyncThunk('user/registerUser',
   async (payload, thunkApi) => {
-    console.log(thunkApi)
+    console.log(payload)
     try {
       await validateSignUpSchema(payload);
       const res = await axios.post(`${url}/signup`, payload);
-      toast.success(res.data.msg);
+      toast.success(res.data.message);
       console.log(res)
-      return res;
+      return {
+        message: res.data.message
+      };
     } catch (error) {
-      toast.error(error.response ? error.response.data.msg : error.message);
-      let errorValue = error.response ? error.response.data.msg : error.message;
+      toast.error(error.response ? error.response.data.message : error.message);
+      let errorValue = error.response ? error.response.data.message : error.message;
       return thunkApi.rejectWithValue(errorValue);
     }
 });

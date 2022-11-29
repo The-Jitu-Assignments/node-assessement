@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../features/user/UserSlice';
 
 const RegisterPage = () => {
-  const { successStatus, error } = useSelector(state => state.user);
-  console.log(successStatus, 'error', error);
+  const { successStatus } = useSelector(state => state.user);
   const [user, setUser] = React.useState({
     userName: '',
     userEmail: '',
@@ -21,26 +20,19 @@ const RegisterPage = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch();
 
-  const handleSubmit = () => {
-    dispatch(registerUser(user));
-    if (successStatus) {
-      navigate('/login');
-      setUser({
-        userName: '',
-        userEmail: '',
-        userPassword: ''
-      })
-      console.log('working')
-    } else {
-      setUser({
-        userName: '',
-        userEmail: '',
-        userPassword: ''
-      })
-      console.log('not working')
+  const handleSubmit = async () => {
+    const res = await dispatch(registerUser(user));
+    console.log(res);
+    if (res.payload.message === 'User created successfully') {
+      navigate('/login')
     }
+    return;
 
   };
+
+  // React.useEffect(() => {
+  //   if (successStatus) navigate('/');
+  // }, [ successStatus ])
 
   return (
     <div className='login--container'>
@@ -54,7 +46,7 @@ const RegisterPage = () => {
             type="text" 
             placeholder='enter a name'
             name='userName'
-            value={user.userNname}
+            value={user.userName}
             onChange={handleChange} 
           />
         </div>
