@@ -26,7 +26,7 @@ const CartOverlay = ({ open, onClose }) => {
 
   const decrementQuantity = useCallback((data) => {
     const { id, quantity,...payload } = data;
-    dispatch(updateProduct({ id, values: {...payload, quantity: quantity - 1 }, msg: 'Quantity removed' }));
+    dispatch(updateProduct({ id, values: {...payload, quantity: quantity - 1 }, msg: 'Quantity decreased' }));
   }, [ productStatus ]);
 
 
