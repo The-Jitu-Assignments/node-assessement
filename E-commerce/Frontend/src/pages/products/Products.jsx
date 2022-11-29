@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Modal from '../../components/modal/Modal';
 import './products.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../../features/products/productSlice';
+import { fetchProducts, updateProduct } from '../../features/products/productSlice';
 import { addToCart } from '../../features/cart/cartSlice';
 import ProductCard from '../../components/cards/productCard/ProductCard';
 
@@ -13,9 +13,19 @@ const Products = () => {
   const [open, setIsOpen] = useState(false);
   const dispatch = useDispatch();
 
+  const handleAddToCart = useCallback((product) => {
+    const { id, productInCart, ...payload } = product;
+    dispatch(updateProduct({ id, values: { ...payload, productInCart: 1 }}))
+  }, [products]);
+
+  //  const handleAddToCart = () => {
+  //   dispatch(updateProduct({ id, values: {...payload, productInCart: productInCart + 1 } }));
+  //   dispatch(fetchProducts());
+  // }
+
   useEffect(() => {
     dispatch(fetchProducts())
-  }, []);
+  }, [handleAddToCart]);
 
   return (
     <div className='products--page'>
