@@ -26,16 +26,16 @@ const RegisterPage = () => {
     if (successStatus) {
       navigate('/login');
       setUser({
-        name: '',
-        email: '',
-        password: ''
+        userName: '',
+        userEmail: '',
+        userPassword: ''
       })
       console.log('working')
     } else {
       setUser({
-        name: '',
-        email: '',
-        password: ''
+        userName: '',
+        userEmail: '',
+        userPassword: ''
       })
       console.log('not working')
     }
@@ -53,8 +53,8 @@ const RegisterPage = () => {
           <input 
             type="text" 
             placeholder='enter a name'
-            name='name'
-            value={user.name}
+            name='userName'
+            value={user.userNname}
             onChange={handleChange} 
           />
         </div>
@@ -63,8 +63,8 @@ const RegisterPage = () => {
           <input 
             type="email" 
             placeholder='enter an email' 
-            name='email'
-            value={user.email}
+            name='userEmail'
+            value={user.userEmail}
             onChange={handleChange}
           />
         </div>
@@ -73,8 +73,8 @@ const RegisterPage = () => {
           <input 
             type="password" 
             placeholder='enter your password' 
-            name='password'
-            value={user.password}
+            name='userPassword'
+            value={user.userPassword}
             onChange={handleChange}
           />
         </div>
