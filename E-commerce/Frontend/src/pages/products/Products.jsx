@@ -3,7 +3,6 @@ import Modal from '../../components/modal/Modal';
 import './products.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts, updateProduct } from '../../features/products/productSlice';
-// import { addToCart } from '../../features/cart/cartSlice';
 import ProductCard from '../../components/cards/productCard/ProductCard';
 
 const Products = () => {
@@ -17,11 +16,6 @@ const Products = () => {
     const { id, productInCart, ...payload } = product;
     dispatch(updateProduct({ id, values: { ...payload, productInCart: 1 }}))
   }, [products]);
-
-  //  const handleAddToCart = () => {
-  //   dispatch(updateProduct({ id, values: {...payload, productInCart: productInCart + 1 } }));
-  //   dispatch(fetchProducts());
-  // }
 
   useEffect(() => {
     dispatch(fetchProducts())
