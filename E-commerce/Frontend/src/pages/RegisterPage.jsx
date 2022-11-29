@@ -7,9 +7,9 @@ const RegisterPage = () => {
   const { successStatus, error } = useSelector(state => state.user);
   console.log(successStatus, 'error', error);
   const [user, setUser] = React.useState({
-    name: '',
-    email: '',
-    password: ''
+    userName: '',
+    userEmail: '',
+    userPassword: ''
   });
 
   const handleChange = (e) => {
@@ -39,7 +39,7 @@ const RegisterPage = () => {
       })
       console.log('not working')
     }
-    // navigate('/')
+
   };
 
   return (
