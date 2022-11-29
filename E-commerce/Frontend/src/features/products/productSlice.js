@@ -36,7 +36,8 @@ export const updateProduct = createAsyncThunk('product/updateProduct',
     console.log(values)
     try {
       const res = await axios.put(`${url}/${id}`, values)
-      console.log(res);
+      toast.success(res.data.msg);
+      dispatch(fetchProducts());
       return { id, values }
     } catch (error) {
       console.log(error);

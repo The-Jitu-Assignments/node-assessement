@@ -2,8 +2,8 @@ import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { BiUpArrow, BiDownArrow } from 'react-icons/bi';
 import { AiOutlineDelete } from 'react-icons/ai';
-import { removeItemFromCart, increaseItemQuantity, decreaseItemQuantity } from '../../../features/cart/cartSlice';
-import { updateProduct } from '../../../features/products/productSlice';
+import { removeItemFromCart, increaseItemQuantity, decreaseItemQuantity, fetchItems } from '../../../features/cart/cartSlice';
+import { fetchProducts, updateProduct } from '../../../features/products/productSlice';
 
 const CartCard = () => {
   const dispatch = useDispatch();
@@ -23,7 +23,8 @@ const CartCard = () => {
 
   const handleRemoveItem = (data) => {
     const { id, productInCart, ...payload } = data;
-    dispatch(updateProduct({ id, values: { ...payload, productInCart: productInCart - 1 }}))
+    dispatch(updateProduct({ id, values: { ...payload, productInCart: productInCart - 1 }}));
+    dispatch(fetchProducts());
   }
 
   const cartItem = useMemo(() => (

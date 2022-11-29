@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../../../features/cart/cartSlice';
-import { updateProduct } from '../../../features/products/productSlice';
+import { fetchProducts, updateProduct } from '../../../features/products/productSlice';
 import '../cards.css';
 
 const ProductCard = ({ data }) => {
@@ -14,6 +14,7 @@ const ProductCard = ({ data }) => {
 
   const handleAddToCart = () => {
     dispatch(updateProduct({ id, values: {...payload, productInCart: productInCart + 1 } }));
+    dispatch(fetchProducts());
   }
   return (
     <div className='product--card'>

@@ -1,14 +1,21 @@
 import React from 'react';
 import CartCard from '../cards/cartCard/CartCard';
 import './cart.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchProducts } from '../../features/products/productSlice';
+import { fetchItems } from '../../features/cart/cartSlice';
 
 const CartOverlay = ({ open, onClose }) => {
+  const dispatch = useDispatch();
   const { cart } = useSelector(state => state.cart);
+  console.log(cart);
   if (!open) return;
 
   const totalProducts = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
+  React.useEffect(() => {
+    dispatch(fetchItems());
+  }, []);
 
   return (
     <div className='overlay' onClick={onClose}>
